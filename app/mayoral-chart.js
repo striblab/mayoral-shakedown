@@ -24,8 +24,14 @@ export default {
   candidatesInContention: [],
   svg: null,
 
-  init: function(_id, _data) {
+  init: function(_id, _data, options) {
     var self = this;
+
+    options = options || {};
+    console.log(options);
+    self.baseWidth = options.baseWidth || self.baseWidth;
+    self.baseHeight = options.baseHeight || self.baseHeight;
+    self.margin = options.margin || self.margin;
 
     self.id = _id;
     self.data = _data;

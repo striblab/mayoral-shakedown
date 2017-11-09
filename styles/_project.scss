@@ -120,20 +120,16 @@
 
 .chart-wrapper {
   position: relative;
-  height: 630px;
-  font-family: arial, helvetica, sans-serif !important;
+  min-height: 630px;
+  width: 100%;
 }
 
 .chart {
-  position: absolute;
-  top: 0px;
-}
 
-.chart20 {
-  position: absolute;
-  top: 0px;
-  display: none;
-  opacity: 0;
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .controls {
@@ -181,10 +177,6 @@
 
 .btn-inactive:hover {
   background-color: #ccc;
-}
-
-.chart {
-  margin: 20px 0;
 }
 
 .candidates {
