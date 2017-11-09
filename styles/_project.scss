@@ -35,6 +35,12 @@
     font-weight: bold;
 }
 
+.lg-container {
+  max-width: 1020px;
+  padding: 0 0.85em;
+  margin: 0 auto;
+}
+
 .graphic {
   margin: 0 auto 50px auto;
   color: #333;
@@ -138,7 +144,7 @@
   line-height: 20px;
   margin-left: 40px;
   padding-top: 3px;
-  margin-right: 110px;    
+  margin-right: 110px;
 }
 
 .btn {
@@ -182,7 +188,7 @@
     opacity: 0.1;
     transition: opacity .4s linear;
   }
-    
+
     img   {
         max-width: 80px;
     }
