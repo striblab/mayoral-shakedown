@@ -1,0 +1,366 @@
+/**
+ * Project specific styling.
+ */
+
+.clear {
+  clear: both;
+}
+
+.oneColContainer {
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+@font-face {
+  font-family: Popular;
+    src: url("http://apps.startribune.com/fonts/popular/regular/851caebd-2961-4fd9-a500-2b38452b1ec9-2.eot?") format("embedded-opentype"), url("http://apps.startribune.com/fonts/popular/regular/851caebd-2961-4fd9-a500-2b38452b1ec9-3.woff") format("woff"), url("http://apps.startribune.com/fonts/popular/regular/851caebd-2961-4fd9-a500-2b38452b1ec9-1.ttf") format("truetype"), url("http://apps.startribune.com/fonts/popular/regular/851caebd-2961-4fd9-a500-2b38452b1ec9-4.svg#web") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+  font-family: Popular-medium;
+    src: url("http://apps.startribune.com/fonts/popular/medium/96c3bd87-fed5-419d-a1cf-d947b17d6ab7-2.eot?") format("embedded-opentype"), url("http://apps.startribune.com/fonts/popular/medium/96c3bd87-fed5-419d-a1cf-d947b17d6ab7-3.woff") format("woff"), url("http://apps.startribune.com/fonts/popular/medium/96c3bd87-fed5-419d-a1cf-d947b17d6ab7-1.ttf") format("truetype"), url("http://apps.startribune.com/fonts/popular/medium/96c3bd87-fed5-419d-a1cf-d947b17d6ab7-4.svg#web") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+  font-family: Popular-bold;
+    src: url("http://apps.startribune.com/fonts/popular/bold/9a23c9ca-82fe-417a-9070-5f5daeaf6214-2.eot?") format("embedded-opentype"), url("http://apps.startribune.com/fonts/popular/bold/9a23c9ca-82fe-417a-9070-5f5daeaf6214-3.woff") format("woff"), url("http://apps.startribune.com/fonts/popular/bold/9a23c9ca-82fe-417a-9070-5f5daeaf6214-1.ttf") format("truetype"), url("http://apps.startribune.com/fonts/popular/bold/9a23c9ca-82fe-417a-9070-5f5daeaf6214-4.svg#web") format("svg");
+    font-style: normal;
+    font-weight: bold;
+}
+
+.graphic {
+  margin: 0 auto 50px auto;
+  color: #333;
+  display: none;
+}
+
+.introbox {
+  margin-top: 6px;
+}
+
+.introHed {
+  font-family: Popular, sans-serif;
+  font-size: 36px;
+  color: #999;
+  text-align: center;
+  margin: 20px 0 0 0;
+  line-height: 130%;
+  display: none;
+}
+
+.labelHed {
+  font-family: Popular-bold, sans-serif;
+  font-size: 18px;
+  color: #333;
+  line-height: 230%;
+  margin-bottom: 0px;
+  margin-top: 24px;
+}
+
+.globber {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 130%;
+  color: #333;
+  margin: 6px 0 16px 0;
+}
+
+.sampleBallot {
+  float: right;
+  vertical-align: top;
+  margin-top: -10px !important;
+}
+
+.graphic h1 {
+  font-family: Arial, sans-serif;
+  font-size: 27px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.graphic h2 {
+  font-family: Arial, sans-serif;
+  font-size: 23px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.graphic p {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.summary {
+  font-family: Gerogia, serif;
+  font-size: 18px;
+  line-height: 20px;
+  width: 550px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.sub-summary {
+  font-family: Gerogia, serif;
+  font-size: 18px;
+  line-height: 20px;
+  width: 550px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 630px;
+  font-family: arial, helvetica, sans-serif !important;
+}
+
+.chart {
+  position: absolute;
+  top: 0px;
+}
+
+.chart20 {
+  position: absolute;
+  top: 0px;
+  display: none;
+  opacity: 0;
+}
+
+.controls {
+  position: absolute;
+  top: 190px;
+  left: 0px;
+}
+
+.explanation {
+  width: 530px;
+  height: 50px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 158px;
+  padding-top: 3px;
+}
+
+.btn {
+  float: left;
+    /*
+  width: 50px;
+  height: 25px;
+ */
+  padding: 6px 16px 6px 16px;
+  margin: 4px 2px;
+  background-color: #666;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #777;
+}
+
+.btn-inactive {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.btn-inactive:hover {
+  background-color: #ccc;
+}
+
+.chart {
+  margin: 20px 0;
+}
+
+.candidates {
+  margin-left: 28px;
+}
+
+.candidate {
+  float: left;
+  padding: 0 0.5em;
+  width: 16.5%;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #333;
+}
+
+.candidate img {
+  max-width: 80px;
+  padding: 2px;
+  opacity: 0.6;
+  transition: opacity .4s linear;
+}
+
+.candidate-eliminated img {
+  opacity: 0.1;
+  transition: opacity .4s linear;
+}
+
+.round-label {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  fill: #333;
+  stroke: none;
+}
+
+.guide-wrapper {
+}
+
+.annotation {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  fill: #666;
+  stroke: none;
+}
+
+.leader-line {
+  stroke: #999;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.guide {
+  fill: none;
+  stroke: #999;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.threshold {
+  fill: none;
+  stroke: #999;
+  stroke-width: 1px;
+  stroke-dasharray: 2, 2;
+  shape-rendering: crispEdges;
+}
+
+.threshold-label {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  fill: #666;
+  stroke: none;
+}
+
+.vote-line {
+  fill: none;
+  stroke: #334561;
+  stroke-opacity: 0.5;
+  transition: stroke-opacity .1s linear;
+}
+
+.vote-line-active {
+  stroke-opacity: 0.9;
+  transition: stroke-opacity .1s linear;
+}
+
+.vote-line-original {
+  stroke: #58794F;
+}
+
+.col1 {
+  margin-left: 100px;
+  width: 370px;
+  float: left;
+  margin-top: 18px;
+  padding-right: 18px;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.col1 p {
+  margin: 12px 0;
+}
+
+.col2 {
+  margin-right: 100px;
+  width: 370px;
+  float: left;
+  margin-top: 18px;
+}
+
+.axis {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #666;
+  stroke: none;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+.domain {
+  stroke: none;
+}
+
+.x-axis .tick line {
+  stroke: none;
+}
+
+.y-axis .tick {
+  stroke: #aaa;
+}
+
+.line {
+  fill: none;
+  stroke: #58794F;
+  stroke-width: 4px;
+}
+
+.annotation-graph {
+  font-size: 11px;
+}
+
+.annotation-circle {
+  fill: #58794F;
+  fill-opacity: 0.2;
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+.icon-arrow-down,
+.icon-arrow-down-2 {
+  background: url(rank-arrow.png);
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0px 0 24px 0;
+  clear: both;
+}
+
+.candidate-name {
+  font-family: arial, helvetica, sans-serif;
+  font-weight: bold;
+  margin: 9px 0 9px 0;
+}
+
+#adcheckB {
+  border: none;
+}
+
+.view2 .globber {
+  margin-bottom: 24px;
+}

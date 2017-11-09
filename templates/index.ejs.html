@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('./_head.ejs.html')
+  </head>
+
+  <body>
+    <!-- Screen reader announcements -->
+    <div aria-live="polite" id="announcer" class="sr-only"></div>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="to-main-content sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="project-header" role="banner">
+      @@include('./_header.ejs.html')
+    </header>
+
+    <!-- Main content here -->
+    <main id="main-content" class="content" role="main">
+
+      <div id="view1">
+        <div class="labelHed">Votes transfer between candidates</div>
+
+        <div class="chart-wrapper">
+          <div class="chart">
+            <div class="candidates cf">
+              <div class="candidate candidate-0">
+                <div class="candidate-name">Jacob Frey</div>
+              </div>
+
+              <div class="candidate candidate-1">
+                <div class="candidate-name">Tom Hoch</div>
+              </div>
+
+              <div class="candidate candidate-2">
+                <div class="candidate-name">Betsy Hodges</div>
+              </div>
+
+              <div class="candidate candidate-3">
+                <div class="candidate-name">Raymond Dehn</div>
+              </div>
+
+              <div class="candidate candidate-4">
+                <div class="candidate-name">Nekima Levy-Pound</div>
+              </div>
+
+              <div class="candidate candidate-5">
+                <div class="candidate-name">(Other)</div>
+              </div>
+            </div>
+
+            <div class="target-0"></div>
+          </div>
+
+          <div class="controls">
+            <div class="btn btn-previous btn-inactive no-select">Previous</div>
+            <div class="btn btn-next no-select">Next</div>
+            <div class="explanation"></div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+      @@include('./_footer.ejs.html')
+    </footer>
+
+    <!-- Global/external scripts -->
+    <% if (config.js && config.js.globals) { config.js.globals.forEach(function(s) { %>
+      <script src="<%= s %>"></script>
+    <% }); } %>
+
+    <!-- Scripts -->
+    <script src="./app.bundle.js"></script>
+  </body>
+</html>

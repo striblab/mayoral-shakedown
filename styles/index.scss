@@ -1,0 +1,15 @@
+/**
+ * Main style file for project.
+ * Uses SASS, specifically the SCSS syntax
+ * http://sass-lang.com/
+ */
+
+@import 'base/fonts';
+@import 'variables';
+@import 'base/reset';
+@import 'base/helpers';
+@import 'base/base';
+@import 'base/site-view';
+
+// The project style is the main one to edit
+@import 'project';
