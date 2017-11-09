@@ -111,7 +111,7 @@ $(document).ready(() => {
       }
     ],
 
-    // 2: (Round 1) Redistribution
+    // Round 1-2 Redistribution
     [
       function() {
         console.log('Round 1-2: Redistribution');
@@ -150,13 +150,11 @@ $(document).ready(() => {
           .classed('vote-line-active', true);
 
         r.drawRoundAnnotations(2);
-        r.drawRoundBetween(1, true, function() {
+        r.drawRoundBetween(1, false, function() {
           d3.select('.candidate-4').classed('candidate-eliminated', true);
 
-          r.drawRoundBetween(1, false, function() {
-            r.drawRoundChart(2, function() {
-              isTransitioning = false;
-            });
+          r.drawRoundChart(2, function() {
+            isTransitioning = false;
           });
         });
 
@@ -196,13 +194,11 @@ $(document).ready(() => {
         isTransitioning = true;
 
         r.drawRoundAnnotations(3);
-        r.drawRoundBetween(2, true, function() {
+        r.drawRoundBetween(2, false, function() {
           d3.select('.candidate-1').classed('candidate-eliminated', true);
 
-          r.drawRoundBetween(2, false, function() {
-            r.drawRoundChart(3, function() {
-              isTransitioning = false;
-            });
+          r.drawRoundChart(3, function() {
+            isTransitioning = false;
           });
         });
 
@@ -242,13 +238,11 @@ $(document).ready(() => {
         isTransitioning = true;
 
         r.drawRoundAnnotations(4);
-        r.drawRoundBetween(2, true, function() {
+        r.drawRoundBetween(3, false, function() {
           d3.select('.candidate-2').classed('candidate-eliminated', true);
 
-          r.drawRoundBetween(3, false, function() {
-            r.drawRoundChart(4, function() {
-              isTransitioning = false;
-            });
+          r.drawRoundChart(4, function() {
+            isTransitioning = false;
           });
         });
 
