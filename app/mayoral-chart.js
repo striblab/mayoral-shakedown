@@ -131,38 +131,64 @@ export default {
             .attr('width', self.width / self.numberOfCandidates - self.hPadding)
             .attr('height', self.rowHeight);
 
-          guideWrapper
-            .append('line')
-            .attr('class', 'threshold')
-            .attr(
-              'x1',
-              candidateIndex * (self.width / self.numberOfCandidates) +
-                self.hPadding / 2 +
-                self.x(0.5)
-            )
-            .attr(
-              'x2',
-              candidateIndex * (self.width / self.numberOfCandidates) +
-                self.hPadding / 2 +
-                self.x(0.5)
-            )
-            .attr('y1', roundIndex * self.vPadding)
-            .attr('y2', roundIndex * self.vPadding + self.rowHeight);
+          // guideWrapper
+          //   .append('line')
+          //   .attr('class', 'threshold')
+          //   .attr(
+          //     'x1',
+          //     candidateIndex * (self.width / self.numberOfCandidates) +
+          //       self.hPadding / 2 +
+          //       self.x(0.5)
+          //   )
+          //   .attr(
+          //     'x2',
+          //     candidateIndex * (self.width / self.numberOfCandidates) +
+          //       self.hPadding / 2 +
+          //       self.x(0.5)
+          //   )
+          //   .attr('y1', roundIndex * self.vPadding)
+          //   .attr('y2', roundIndex * self.vPadding + self.rowHeight);
+          //
+          // if (roundIndex === 0 && candidateIndex === 0) {
+          //   guideWrapper
+          //     .append('text')
+          //     .attr('class', 'threshold-label')
+          //     .attr(
+          //       'x',
+          //       candidateIndex * (self.width / self.numberOfCandidates) +
+          //         self.hPadding / 2 +
+          //         self.x(0.5) +
+          //         4
+          //     )
+          //     .attr('y', roundIndex * self.vPadding + self.rowHeight / 2 + 4)
+          //     .text('50%');
+          // }
 
-          if (roundIndex === 0 && candidateIndex === 0) {
-            guideWrapper
-              .append('text')
-              .attr('class', 'threshold-label')
-              .attr(
-                'x',
-                candidateIndex * (self.width / self.numberOfCandidates) +
-                  self.hPadding / 2 +
-                  self.x(0.5) +
-                  4
-              )
-              .attr('y', roundIndex * self.vPadding + self.rowHeight / 2 + 4)
-              .text('50%');
-          }
+          // Vote labels
+          let formatter = d3.format(',d');
+          guideWrapper
+            .append('text')
+            .attr('class', 'vote-label')
+            .attr(
+              'x',
+              candidateIndex * (self.width / self.numberOfCandidates) +
+                self.hPadding / 2 +
+                (self.width / self.numberOfCandidates - self.hPadding * 1.2)
+            )
+            .attr('y', roundIndex * self.vPadding + self.rowHeight / 2)
+            .attr('text-anchor', 'end')
+            .attr('alignment-baseline', 'central')
+            .text(() => {
+              return formatter(
+                _.reduce(
+                  self.data[roundIndex][0],
+                  (total, d) => {
+                    return total + (d.from === candidateIndex ? d.votes : 0);
+                  },
+                  0
+                )
+              );
+            });
         }
         self.candidatesInContention[candidateIndex] = _.find(
           self.data[roundIndex][1],
@@ -315,17 +341,11 @@ export default {
 
   drawRoundChart: function(roundIndex, callback) {
     var self = this;
-    var callbackCalled = false;
-
     var cumulativeVotesIn = self.getFreshCumulativeVotes();
     var cumulativeVotesOut = self.getFreshCumulativeVotes();
 
-    self.svg
+    let p = self.svg
       .selectAll('.vote-line-chart-round-' + roundIndex)
-      .interrupt()
-      .transition()
-      .ease('linear')
-      .duration(500)
       .attr('d', function(d) {
         var lineData = [];
         var beginPoint = [
@@ -344,28 +364,18 @@ export default {
         cumulativeVotesOut[d.from] += d.votes / self.totalVotes;
 
         return self.line(lineData);
-      })
-      .each('end', function() {
-        if (callback && !callbackCalled) {
-          callback();
-          callbackCalled = true;
-        }
       });
+
+    self.animatePath(p, 500, callback);
   },
 
   undrawRoundChart: function(roundIndex, callback) {
     var self = this;
-    var callbackCalled = false;
-
     var cumulativeVotesIn = self.getFreshCumulativeVotes();
     var cumulativeVotesOut = self.getFreshCumulativeVotes();
 
-    self.svg
+    let p = self.svg
       .selectAll('.vote-line-chart-round-' + roundIndex)
-      .interrupt()
-      .transition()
-      .ease('linear')
-      .duration(500)
       .attr('d', function(d) {
         var lineData = [];
         var beginPoint = [
@@ -384,13 +394,9 @@ export default {
         cumulativeVotesOut[d.from] += d.votes / self.totalVotes;
 
         return self.line(lineData);
-      })
-      .each('end', function() {
-        if (callback && !callbackCalled) {
-          callback();
-          callbackCalled = true;
-        }
       });
+
+    self.animatePath(p, 500, callback, true);
   },
 
   drawRoundBetween: function(roundIndex, original, callback) {
@@ -407,54 +413,42 @@ export default {
       s += '.vote-line-original';
     }
 
-    self.svg
-      .selectAll(s)
-      .interrupt()
-      .transition()
-      .ease('linear')
-      .duration(1500)
-      .attr('d', function(d) {
-        var lineData = [];
-        var beginPoint = [
-          d.from * self.candidateWidth +
-            self.x(cumulativeVotesInitialOut[d.from]),
-          roundIndex * self.vPadding + self.rowHeight
-        ];
-        var endPoint = [
-          d.to * self.candidateWidth + self.x(cumulativeVotesInitialIn[d.to]),
-          (roundIndex + 1) * self.vPadding
-        ];
+    let p = self.svg.selectAll(s).attr('d', function(d) {
+      var lineData = [];
+      var beginPoint = [
+        d.from * self.candidateWidth +
+          self.x(cumulativeVotesInitialOut[d.from]),
+        roundIndex * self.vPadding + self.rowHeight
+      ];
+      var endPoint = [
+        d.to * self.candidateWidth + self.x(cumulativeVotesInitialIn[d.to]),
+        (roundIndex + 1) * self.vPadding
+      ];
 
-        var preMidPoint = [beginPoint[0], beginPoint[1] + self.vPadding / 3];
-        var midPoint = [
-          (beginPoint[0] + endPoint[0]) / 2,
-          (beginPoint[1] + endPoint[1]) / 2
-        ];
-        var postMidPoint = [endPoint[0], endPoint[1] - self.vPadding / 3];
+      var preMidPoint = [beginPoint[0], beginPoint[1] + self.vPadding / 3];
+      var midPoint = [
+        (beginPoint[0] + endPoint[0]) / 2,
+        (beginPoint[1] + endPoint[1]) / 2
+      ];
+      var postMidPoint = [endPoint[0], endPoint[1] - self.vPadding / 3];
 
-        lineData.push(beginPoint);
-        lineData.push(preMidPoint);
-        lineData.push(midPoint);
-        lineData.push(postMidPoint);
-        lineData.push(endPoint);
+      lineData.push(beginPoint);
+      lineData.push(preMidPoint);
+      lineData.push(midPoint);
+      lineData.push(postMidPoint);
+      lineData.push(endPoint);
 
-        cumulativeVotesInitialIn[d.to] += d.votes / self.totalVotes;
-        cumulativeVotesInitialOut[d.from] += d.votes / self.totalVotes;
+      cumulativeVotesInitialIn[d.to] += d.votes / self.totalVotes;
+      cumulativeVotesInitialOut[d.from] += d.votes / self.totalVotes;
 
-        return self.line(lineData);
-      })
-      .each('end', function() {
-        if (callback && !callbackCalled) {
-          callback();
-          callbackCalled = true;
-        }
-      });
+      return self.line(lineData);
+    });
+
+    self.animatePath(p, 1500, callback);
   },
 
   undrawRoundBetween: function(roundIndex, original, callback) {
     var self = this;
-    var callbackCalled = false;
-
     var cumulativeVotesInitialIn = self.getFreshCumulativeVotes();
     var cumulativeVotesInitialOut = self.getFreshCumulativeVotes();
     var cumulativeVotesIn = self.getFreshCumulativeVotes();
@@ -465,48 +459,38 @@ export default {
       s += '.vote-line-original';
     }
 
-    self.svg
-      .selectAll(s)
-      .interrupt()
-      .transition()
-      .ease('linear')
-      .duration(1500)
-      .attr('d', function(d) {
-        var lineData = [];
-        var beginPoint = [
-          d.from * self.candidateWidth +
-            self.x(cumulativeVotesInitialOut[d.from]),
-          roundIndex * self.vPadding + self.rowHeight
-        ];
-        var endPoint = [
-          d.to * self.candidateWidth + self.x(cumulativeVotesInitialIn[d.to]),
-          (roundIndex + 1) * self.vPadding
-        ];
+    let p = self.svg.selectAll(s).attr('d', function(d) {
+      var lineData = [];
+      var beginPoint = [
+        d.from * self.candidateWidth +
+          self.x(cumulativeVotesInitialOut[d.from]),
+        roundIndex * self.vPadding + self.rowHeight
+      ];
+      var endPoint = [
+        d.to * self.candidateWidth + self.x(cumulativeVotesInitialIn[d.to]),
+        (roundIndex + 1) * self.vPadding
+      ];
 
-        var preMidPoint = [beginPoint[0], beginPoint[1] + self.vPadding / 3];
-        var midPoint = [
-          (beginPoint[0] + endPoint[0]) / 2,
-          (beginPoint[1] + endPoint[1]) / 2
-        ];
-        var postMidPoint = [endPoint[0], endPoint[1] - self.vPadding / 3];
+      var preMidPoint = [beginPoint[0], beginPoint[1] + self.vPadding / 3];
+      var midPoint = [
+        (beginPoint[0] + endPoint[0]) / 2,
+        (beginPoint[1] + endPoint[1]) / 2
+      ];
+      var postMidPoint = [endPoint[0], endPoint[1] - self.vPadding / 3];
 
-        lineData.push(beginPoint);
-        lineData.push(beginPoint);
-        lineData.push(beginPoint);
-        lineData.push(beginPoint);
-        lineData.push(beginPoint);
+      lineData.push(beginPoint);
+      lineData.push(beginPoint);
+      lineData.push(beginPoint);
+      lineData.push(beginPoint);
+      lineData.push(beginPoint);
 
-        cumulativeVotesInitialIn[d.to] += d.votes / self.totalVotes;
-        cumulativeVotesInitialOut[d.from] += d.votes / self.totalVotes;
+      cumulativeVotesInitialIn[d.to] += d.votes / self.totalVotes;
+      cumulativeVotesInitialOut[d.from] += d.votes / self.totalVotes;
 
-        return self.line(lineData);
-      })
-      .each('end', function() {
-        if (callback && !callbackCalled) {
-          callback();
-          callbackCalled = true;
-        }
-      });
+      return self.line(lineData);
+    });
+
+    self.animatePath(p, 1500, callback, true);
   },
 
   drawRoundAnnotations: function(round) {
@@ -529,6 +513,43 @@ export default {
       .ease('linear')
       .duration(500)
       .style('opacity', 0);
+  },
+
+  // Animate a path
+  animatePath(path, duration, callback, reverse = false) {
+    let callbackCalled = false;
+    path
+      .attr('stroke-dasharray', function() {
+        var totalLength = this.getTotalLength();
+        return totalLength + ' ' + totalLength;
+      })
+      .attr(
+        'stroke-dashoffset',
+        reverse
+          ? 0
+          : function() {
+            var totalLength = this.getTotalLength();
+            return totalLength;
+          }
+      )
+      .transition()
+      .duration(duration)
+      .ease('linear')
+      .attr(
+        'stroke-dashoffset',
+        !reverse
+          ? 0
+          : function() {
+            var totalLength = this.getTotalLength();
+            return totalLength;
+          }
+      )
+      .each('end', function() {
+        if (callback && !callbackCalled) {
+          callback();
+          callbackCalled = true;
+        }
+      });
   },
 
   mouseover: function(d) {
