@@ -16,7 +16,7 @@ export default {
 
   // TODO These can be computed
   totalVotes: 104522,
-  numberOfRounds: 3,
+  numberOfRounds: 5,
   numberOfCandidates: 6,
 
   /* Computed */
@@ -28,7 +28,6 @@ export default {
     var self = this;
 
     options = options || {};
-    console.log(options);
     self.baseWidth = options.baseWidth || self.baseWidth;
     self.baseHeight = options.baseHeight || self.baseHeight;
     self.margin = options.margin || self.margin;

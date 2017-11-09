@@ -11,15 +11,23 @@ import data from './mayoral-counting.js';
 import rcvChart from './mayoral-chart.js';
 
 // Setup utils function
-utilsFn({ setView: false });
+utilsFn({ useView: false });
 
 $(document).ready(() => {
+  var leftMargin = 100;
+
   var r = rcvChart.init('.target-0', data, {
-    baseWidth: $('#view1').width()
+    baseWidth: $('#view1').width(),
+    // Note we change the height of the SVG as we animate
+    baseHeight: 200,
+    margin: { top: 10, right: leftMargin / 3, bottom: 10, left: leftMargin }
   });
   var explanation = d3.select('.explanation');
-  var controls = d3.select('.controls');
+  var svgContainer = d3.select('#view1 svg');
   var isTransitioning = false;
+
+  // Align candidates labels with chart
+  $('.candidates').css('padding-left', leftMargin + 'px');
 
   r.svg
     .selectAll('.round-labels .round-label, .guide-wrapper')
@@ -29,16 +37,18 @@ $(document).ready(() => {
     // The first function is for setup
     // The second function is for teardown
     [
+      // 0: (Round 1) Initial state
       function() {
+        console.log('Round 1');
         isTransitioning = true;
         r.drawRoundAnnotations(0);
         r.drawRoundChart(0, function() {
           isTransitioning = false;
         });
-        explanation.html(
-          'If any candidate wins a majority of first choice votes, he or she is the winner. Candidate A came close, but did not reach the threshold.'
-        );
+        explanation.html('TODO: START');
       },
+
+      // Teardown (previous to this)
       function() {
         isTransitioning = true;
         r.undrawRoundAnnotations(0);
@@ -47,56 +57,75 @@ $(document).ready(() => {
         });
       }
     ],
+
+    // 1: (Round 1-2) Carry-over votes
     [
+      // Setup (next to this)
       function() {
+        console.log('Round 1-2: Carry-over');
         isTransitioning = true;
+
+        // Scroll to top
         $('html, body').animate(
           {
             scrollTop: $('#view1').offset().top
           },
           1000
         );
+
+        // Draw box
         r.drawRoundAnnotations(1);
+
+        // Draw redistributed votes
         r.drawRoundBetween(0, true, function() {
-          d3.select('.candidate-1').classed('candidate-eliminated', true);
+          // Mark candidate as knocked out
+          d3.select('.candidate-5').classed('candidate-eliminated', true);
+
           isTransitioning = false;
         });
-        explanation.html(
-          'Since no candidate won a majority, we continue to Round 2. The candidate with the fewest votes is eliminated.'
-        );
-        controls
+        explanation.html('TODO: Votes carried over');
+
+        // Open the container
+        svgContainer
           .transition()
           .ease('linear')
-          .duration(1000)
-          .style('top', '380px');
+          .duration(500)
+          .attr('height', '380px');
       },
+
+      // Teardown (previous to this)
       function() {
         isTransitioning = true;
+
         r.undrawRoundAnnotations(1);
         r.undrawRoundBetween(0, true, function() {
-          d3.select('.candidate-1').classed('candidate-eliminated', false);
+          d3.select('.candidate-5').classed('candidate-eliminated', false);
           isTransitioning = false;
         });
-        controls
+
+        svgContainer
           .transition()
           .ease('linear')
-          .duration(1000)
-          .style('top', '200px');
+          .duration(500)
+          .attr('height', '200px');
       }
     ],
+
+    // Round 1-2 Redistribution
     [
       function() {
+        console.log('Round 1-2: Redistribution');
         isTransitioning = true;
-        r.svg
-          .select('.vote-line-round-0.vote-line-from-1-to-3')
-          .classed('vote-line-active', false);
+
+        // Draw redistribution
         r.drawRoundBetween(0, false, function() {
+          // Draw/fill annotiation rectangle
           r.drawRoundChart(1, function() {
             isTransitioning = false;
           });
         });
         explanation.html(
-          'Votes for eliminated candidates are redistributed based on voters&rsquo; second or third choice votes.'
+          'TODO: Redistribution of X candidates that were mathematically impossible to win.'
         );
       },
       function() {
@@ -108,94 +137,141 @@ $(document).ready(() => {
         });
       }
     ],
+
+    // Round 2: Carry-over and redistribution
     [
       function() {
-        r.svg
-          .select('.vote-line-round-0.vote-line-from-1-to-3')
-          .classed('vote-line-active', true);
-        explanation.html(
-          'For example, if a voter selected Candidate B as her first choice and Candidate D as her second, her vote would have moved to Candidate D.'
-        );
-      },
-      function() {
-        r.svg
-          .select('.vote-line-round-0.vote-line-from-1-to-3')
-          .classed('vote-line-active', false);
-      }
-    ],
-    [
-      function() {
+        console.log('Round 2-3: Carry-over and redistribution');
         isTransitioning = true;
+
+        // Highlight distribution
         r.svg
-          .select('.vote-line-round-0.vote-line-from-1-to-3')
-          .classed('vote-line-active', false);
-        explanation.html(
-          'Still, no candidate has reached the threshold. The candidate with the least votes is eliminated again, with his or her votes redistributed.'
-        );
+          .select('.vote-line-round-1.vote-line-from-4-to-1')
+          .classed('vote-line-active', true);
+
         r.drawRoundAnnotations(2);
-        r.drawRoundBetween(1, true, function() {
-          d3.select('.candidate-3').classed('candidate-eliminated', true);
-          r.drawRoundBetween(1, false, function() {
+        r.drawRoundBetween(1, false, function() {
+          d3.select('.candidate-4').classed('candidate-eliminated', true);
+
+          r.drawRoundChart(2, function() {
             isTransitioning = false;
           });
         });
-        controls
+
+        explanation.html('TODO: Nekima is eliminated and ...');
+
+        svgContainer
           .transition()
           .ease('linear')
-          .duration(1000)
-          .style('top', '560px');
+          .duration(500)
+          .attr('height', '560px');
       },
       function() {
         isTransitioning = true;
+
+        r.svg
+          .select('.vote-line-round-1.vote-line-from-4-to-1')
+          .classed('vote-line-active', true);
+
         r.undrawRoundAnnotations(2);
         r.undrawRoundBetween(1, false, function() {
           d3.select('.candidate-3').classed('candidate-eliminated', false);
           isTransitioning = false;
         });
-        controls
+
+        svgContainer
           .transition()
           .ease('linear')
-          .duration(1000)
-          .style('top', '380px');
+          .duration(500)
+          .attr('height', '380px');
       }
     ],
+
+    // Round 3-4: Carry-over and redistribution
     [
       function() {
+        console.log('Round 3-4: Carry-over and redistribution');
         isTransitioning = true;
-        explanation.html(
-          'With this redistribution, Candidate C reached the threshold and is the winner.'
-        );
-        r.drawRoundChart(2, function() {
-          d3.select('.candidate-0').classed('candidate-eliminated', true);
-          r.svg
-            .selectAll('.vote-line-chart-round-2.vote-line-from-candidate-2')
-            .transition()
-            .ease('linear')
-            .duration(500)
-            .style('stroke-opacity', 0.7);
-          r.svg
-            .select('.guide-wrapper-round-2.guide-wrapper-candidate-2 .guide')
-            .transition()
-            .ease('linear')
-            .duration(500)
-            .style('stroke', '#333')
-            .each('end', function() {
-              isTransitioning = false;
-            });
+
+        r.drawRoundAnnotations(3);
+        r.drawRoundBetween(2, false, function() {
+          d3.select('.candidate-1').classed('candidate-eliminated', true);
+
+          r.drawRoundChart(3, function() {
+            isTransitioning = false;
+          });
         });
+
+        explanation.html('TODO: Hoch is eliminated and ...');
+
+        svgContainer
+          .transition()
+          .ease('linear')
+          .duration(500)
+          .attr('height', '740px');
       },
       function() {
         isTransitioning = true;
-        r.undrawRoundChart(2, function() {
-          d3.select('.candidate-0').classed('candidate-eliminated', false);
+
+        r.svg
+          .select('.vote-line-round-1.vote-line-from-4-to-1')
+          .classed('vote-line-active', true);
+
+        r.undrawRoundAnnotations(2);
+        r.undrawRoundBetween(1, false, function() {
+          d3.select('.candidate-3').classed('candidate-eliminated', false);
           isTransitioning = false;
         });
+
+        svgContainer
+          .transition()
+          .ease('linear')
+          .duration(500)
+          .attr('height', '560px');
+      }
+    ],
+
+    // Round 4-5: Carry-over and redistribution
+    [
+      function() {
+        console.log('Round 4-5: Carry-over and redistribution');
+        isTransitioning = true;
+
+        r.drawRoundAnnotations(4);
+        r.drawRoundBetween(3, false, function() {
+          d3.select('.candidate-2').classed('candidate-eliminated', true);
+
+          r.drawRoundChart(4, function() {
+            isTransitioning = false;
+          });
+        });
+
+        explanation.html('TODO: Hodges is eliminated and ...');
+
+        svgContainer
+          .transition()
+          .ease('linear')
+          .duration(500)
+          .attr('height', '820px');
+      },
+      function() {
+        isTransitioning = true;
+
         r.svg
-          .selectAll('.vote-line-chart-round-2.vote-line-from-candidate-2')
-          .style('stroke-opacity', 0.5);
-        r.svg
-          .select('.guide-wrapper-round-2.guide-wrapper-candidate-2 .guide')
-          .style('stroke', '#999');
+          .select('.vote-line-round-1.vote-line-from-4-to-1')
+          .classed('vote-line-active', true);
+
+        r.undrawRoundAnnotations(2);
+        r.undrawRoundBetween(1, false, function() {
+          d3.select('.candidate-3').classed('candidate-eliminated', false);
+          isTransitioning = false;
+        });
+
+        svgContainer
+          .transition()
+          .ease('linear')
+          .duration(500)
+          .attr('height', '560px');
       }
     ]
   ];

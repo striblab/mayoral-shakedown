@@ -120,22 +120,14 @@
 
 .chart-wrapper {
   position: relative;
-  min-height: 630px;
   width: 100%;
 }
 
 .chart {
-
   svg {
     display: block;
     margin: 0 auto;
   }
-}
-
-.controls {
-  position: absolute;
-  top: 190px;
-  left: 0px;
 }
 
 .explanation {
@@ -150,11 +142,7 @@
 }
 
 .btn {
-//  float: left;
-    /*
-  width: 50px;
-  height: 25px;
- */
+  float: left;
   padding: 6px 16px 6px 16px;
   margin: 4px 2px;
   background-color: #666;
@@ -165,6 +153,7 @@
   cursor: pointer;
   font-family: "Benton Sans", arial, sans-serif;
   font-size: 14px;
+  width: 90px;
 }
 
 .btn:hover {
@@ -180,30 +169,23 @@
   background-color: #ccc;
 }
 
-.candidates {
-  margin-left: 28px;
-}
-
 .candidate {
   float: left;
   padding: 0 0.5em;
-  width: 16.5%;
+  width: 16%;
   text-align: center;
   font-family: Georgia, serif;
   font-size: 13px;
   color: #333;
-}
 
-.candidate img {
-  max-width: 80px;
-  padding: 2px;
-  opacity: 0.6;
-  transition: opacity .4s linear;
-}
-
-.candidate-eliminated img {
-  opacity: 0.1;
-  transition: opacity .4s linear;
+  &.candidate-eliminated {
+    opacity: 0.1;
+    transition: opacity .4s linear;
+  }
+    
+    img   {
+        max-width: 80px;
+    }
 }
 
 .round-label {
@@ -348,7 +330,7 @@
   font-family: "Benton Sans", arial, helvetica, sans-serif;
   font-weight: bold;
   margin: -10px 0 9px 0;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .candidate-name.other  {
@@ -366,4 +348,8 @@
 .btn-group  {
     width: 90px;
     float: right;
+}
+
+.controls   {
+    width: 500px;
 }
