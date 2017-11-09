@@ -2,6 +2,10 @@
  * Project specific styling.
  */
 
+body    {
+    max-width: 970px;
+}
+
 .clear {
   clear: both;
 }
@@ -58,6 +62,7 @@
 .labelHed {
   font-family: Popular-bold, sans-serif;
   font-size: 18px;
+  text-align: center;
   color: #333;
   line-height: 230%;
   margin-bottom: 0px;
@@ -79,14 +84,14 @@
 }
 
 .graphic h1 {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 27px;
   margin-bottom: 0px;
   text-align: center;
 }
 
 .graphic h2 {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 23px;
   margin-bottom: 0px;
   text-align: center;
@@ -121,7 +126,7 @@
 .chart-wrapper {
   position: relative;
   height: 630px;
-  font-family: arial, helvetica, sans-serif !important;
+  font-family: "Benton Sans", arial, helvetica, sans-serif !important;
 }
 
 .chart {
@@ -143,22 +148,23 @@
 }
 
 .explanation {
-  width: 530px;
-  height: 50px;
-  font-family: Georgia, serif;
+  width: 500px;
+  height: 80px;
+  font-family: "Benton Sans", arial, helvetica, sans-serif !important;
   font-size: 16px;
   line-height: 20px;
-  margin-left: 158px;
+  margin-left: 40px;
   padding-top: 3px;
+  margin-top: -15px;
 }
 
 .btn {
-  float: left;
+  float: right;
     /*
   width: 50px;
   height: 25px;
  */
-  padding: 6px 16px 6px 16px;
+  padding: 1px 16px 1px 16px;
   margin: 4px 2px;
   background-color: #666;
   border-radius: 4px;
@@ -166,8 +172,9 @@
   text-align: center;
   line-height: 25px;
   cursor: pointer;
-  font-family: arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 14px;
+  width: 90px;
 }
 
 .btn:hover {
@@ -214,7 +221,7 @@
 }
 
 .round-label {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 13px;
   font-weight: bold;
   fill: #333;
@@ -225,7 +232,7 @@
 }
 
 .annotation {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 12px;
   fill: #666;
   stroke: none;
@@ -253,7 +260,7 @@
 }
 
 .threshold-label {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 12px;
   fill: #666;
   stroke: none;
@@ -306,7 +313,7 @@
 .axis text {
   fill: #666;
   stroke: none;
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 11px;
 }
 
@@ -352,9 +359,10 @@
 }
 
 .candidate-name {
-  font-family: arial, helvetica, sans-serif;
+  font-family: "Benton Sans", arial, helvetica, sans-serif;
   font-weight: bold;
   margin: 9px 0 9px 0;
+  font-size: 14px;
 }
 
 #adcheckB {
@@ -363,4 +371,8 @@
 
 .view2 .globber {
   margin-bottom: 24px;
+}
+
+.btn-group  {
+    height: 20px;
 }
