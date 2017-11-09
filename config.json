@@ -1,8 +1,6 @@
 {
-  "about this file":
-    "This document defines configuration for this project that is not content or copy.",
+  "about this file": "This document defines configuration for this project that is not content or copy.",
   "projectIdentifier": "mayoral-shakedown",
-
   "social": {
     "image": "assets/images/strib/strib-logo-name-social-card.png"
   },
@@ -20,30 +18,26 @@
       "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
     ]
   },
-
   "content": {},
   "publish": {
     "default": {
       "bucket": "static.startribune.com",
       "path": "news/projects-staging/all/mayoral-shakedown/",
-      "url":
-        "http://static.startribune.com/news/projects-staging/all/mayoral-shakedown/",
+      "url": "http://static.startribune.com/news/projects-staging/all/mayoral-shakedown/",
       "cacheSeconds": 30
     },
     "testing": {
       "bucket": "stribtest-bucket",
       "path": "news/projects/mayoral-shakedown/",
-      "url":
-        "https://s3.amazonaws.com/stribtest-bucket/news/projects/mayoral-shakedown/",
+      "url": "https://s3.amazonaws.com/stribtest-bucket/news/projects/mayoral-shakedown/",
       "cacheSeconds": 30
     },
-
     "production": {
       "bucket": "static.startribune.com",
       "path": "news/projects/all/mayoral-shakedown/",
-      "url":
-        "http://static.startribune.com/news/projects/all/mayoral-shakedown/",
+      "url": "http://static.startribune.com/news/projects/all/mayoral-shakedown/",
       "cacheSeconds": 600
     }
-  }
+  },
+  "publishToken": "15281c7cb5af920998b3592a245a7170"
 }
