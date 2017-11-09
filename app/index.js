@@ -15,10 +15,13 @@ utilsFn({ setView: false });
 
 $(document).ready(() => {
   var r = rcvChart.init('.target-0', data, {
-    baseWidth: $('#view1').width()
+    baseWidth: $('#view1').width(),
+    // Note we change the height of the SVG as we animate
+    baseHeight: 200
   });
   var explanation = d3.select('.explanation');
   var controls = d3.select('.controls');
+  var svgContainer = d3.select('#view1 svg');
   var isTransitioning = false;
 
   r.svg
@@ -29,6 +32,7 @@ $(document).ready(() => {
     // The first function is for setup
     // The second function is for teardown
     [
+      // Initial state
       function() {
         isTransitioning = true;
         r.drawRoundAnnotations(0);
@@ -39,6 +43,8 @@ $(document).ready(() => {
           'If any candidate wins a majority of first choice votes, he or she is the winner. Candidate A came close, but did not reach the threshold.'
         );
       },
+
+      // Teardown (previous to this)
       function() {
         isTransitioning = true;
         r.undrawRoundAnnotations(0);
@@ -48,33 +54,45 @@ $(document).ready(() => {
       }
     ],
     [
+      // Setup (next to this)
       function() {
         isTransitioning = true;
+
+        // Scroll to top
         $('html, body').animate(
           {
             scrollTop: $('#view1').offset().top
           },
           1000
         );
+
+        // Draw transfer of votes
         r.drawRoundAnnotations(1);
+
+        // Draw redistributed votes
         r.drawRoundBetween(0, true, function() {
-          d3.select('.candidate-1').classed('candidate-eliminated', true);
+          // Mark candidate as knocked out
+          d3.select('.candidate-5').classed('candidate-eliminated', true);
           isTransitioning = false;
         });
         explanation.html(
           'Since no candidate won a majority, we continue to Round 2. The candidate with the fewest votes is eliminated.'
         );
-        controls
+
+        // Open the container
+        svgContainer
           .transition()
           .ease('linear')
-          .duration(1000)
-          .style('top', '380px');
+          .duration(250)
+          .attr('height', '380px');
       },
+
+      // Teardown (previous to this)
       function() {
         isTransitioning = true;
         r.undrawRoundAnnotations(1);
         r.undrawRoundBetween(0, true, function() {
-          d3.select('.candidate-1').classed('candidate-eliminated', false);
+          d3.select('.candidate-5').classed('candidate-eliminated', false);
           isTransitioning = false;
         });
         controls

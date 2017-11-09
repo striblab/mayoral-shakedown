@@ -120,27 +120,17 @@
 
 .chart-wrapper {
   position: relative;
-  min-height: 630px;
   width: 100%;
 }
 
 .chart {
-
   svg {
     display: block;
     margin: 0 auto;
   }
 }
 
-.controls {
-  position: absolute;
-  top: 190px;
-  left: 0px;
-}
-
 .explanation {
-  width: 530px;
-  height: 50px;
   font-family: Georgia, serif;
   font-size: 16px;
   line-height: 20px;
@@ -150,10 +140,6 @@
 
 .btn {
   float: left;
-    /*
-  width: 50px;
-  height: 25px;
- */
   padding: 6px 16px 6px 16px;
   margin: 4px 2px;
   background-color: #666;
@@ -191,18 +177,11 @@
   font-family: Georgia, serif;
   font-size: 13px;
   color: #333;
-}
 
-.candidate img {
-  max-width: 80px;
-  padding: 2px;
-  opacity: 0.6;
-  transition: opacity .4s linear;
-}
-
-.candidate-eliminated img {
-  opacity: 0.1;
-  transition: opacity .4s linear;
+  &.candidate-eliminated {
+    opacity: 0.1;
+    transition: opacity .4s linear;
+  }
 }
 
 .round-label {
