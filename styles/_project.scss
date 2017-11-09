@@ -79,14 +79,14 @@
 }
 
 .graphic h1 {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 27px;
   margin-bottom: 0px;
   text-align: center;
 }
 
 .graphic h2 {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 23px;
   margin-bottom: 0px;
   text-align: center;
@@ -139,17 +139,18 @@
 }
 
 .explanation {
-  width: 530px;
+  width: 300px;
   height: 50px;
-  font-family: Georgia, serif;
+  font-family: "Benton Sans", Georgia, serif;
   font-size: 16px;
   line-height: 20px;
-  margin-left: 158px;
+  margin-left: 40px;
   padding-top: 3px;
+  margin-right: 110px;    
 }
 
 .btn {
-  float: left;
+//  float: left;
     /*
   width: 50px;
   height: 25px;
@@ -157,12 +158,12 @@
   padding: 6px 16px 6px 16px;
   margin: 4px 2px;
   background-color: #666;
-  border-radius: 4px;
+//  border-radius: 4px;
   color: #fff;
   text-align: center;
   line-height: 25px;
   cursor: pointer;
-  font-family: arial, sans-serif;
+  font-family: "Benton Sans", arial, sans-serif;
   font-size: 14px;
 }
 
@@ -206,7 +207,7 @@
 }
 
 .round-label {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 13px;
   font-weight: bold;
   fill: #333;
@@ -217,7 +218,7 @@
 }
 
 .annotation {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 12px;
   fill: #666;
   stroke: none;
@@ -245,7 +246,7 @@
 }
 
 .threshold-label {
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 12px;
   fill: #666;
   stroke: none;
@@ -298,7 +299,7 @@
 .axis text {
   fill: #666;
   stroke: none;
-  font-family: Arial, sans-serif;
+  font-family: "Benton Sans", Arial, sans-serif;
   font-size: 11px;
 }
 
@@ -344,9 +345,14 @@
 }
 
 .candidate-name {
-  font-family: arial, helvetica, sans-serif;
+  font-family: "Benton Sans", arial, helvetica, sans-serif;
   font-weight: bold;
-  margin: 9px 0 9px 0;
+  margin: -10px 0 9px 0;
+  font-size: 14px;
+}
+
+.candidate-name.other  {
+    margin-top: -5px;
 }
 
 #adcheckB {
@@ -355,4 +361,9 @@
 
 .view2 .globber {
   margin-bottom: 24px;
+}
+
+.btn-group  {
+    width: 90px;
+    float: right;
 }
