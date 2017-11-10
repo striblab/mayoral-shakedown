@@ -399,6 +399,8 @@ export default {
     self.animatePath(p, 500, callback, true);
   },
 
+  // The update to the animation method means that all paths get animated
+  // on each call.
   drawRoundBetween: function(roundIndex, original, callback) {
     var self = this;
     var callbackCalled = false;
@@ -411,6 +413,14 @@ export default {
     var s = '.vote-line-between-rounds.vote-line-round-' + roundIndex;
     if (original) {
       s += '.vote-line-original';
+    }
+
+    // Hack to just show redistribution lines
+    if (original === 'redistribution') {
+      s =
+        '.vote-line-between-rounds.vote-line-round-' +
+        roundIndex +
+        ':not(.vote-line-original)';
     }
 
     let p = self.svg.selectAll(s).attr('d', function(d) {
@@ -444,6 +454,7 @@ export default {
       return self.line(lineData);
     });
 
+    console.log(p);
     self.animatePath(p, 1500, callback);
   },
 

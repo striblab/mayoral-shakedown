@@ -100,7 +100,7 @@ $(document).ready(() => {
         isTransitioning = true;
 
         // Draw redistribution
-        r.drawRoundBetween(0, false, function() {
+        r.drawRoundBetween(0, 'redistribution', function() {
           // Draw/fill annotiation rectangle
           r.drawRoundChart(1, function() {
             isTransitioning = false;
@@ -181,6 +181,9 @@ $(document).ready(() => {
         r.drawRoundBetween(3, false, function() {
           d3.selectAll('.candidate-3').classed('candidate-eliminated', true);
           d3.selectAll('.is-winner').classed('show-winner', true);
+          d3
+            .selectAll('.guide-wrapper-round-4.guide-wrapper-candidate-0')
+            .classed('show-winner', true);
 
           r.drawRoundChart(4, function() {
             isTransitioning = false;
