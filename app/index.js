@@ -14,12 +14,12 @@ import rcvChart from './mayoral-chart.js';
 utilsFn({ useView: false });
 
 $(document).ready(() => {
+  var stepHeight = 180;
   var leftMargin = 100;
-
   var r = rcvChart.init('.target-0', data, {
     baseWidth: $('#view1').width(),
     // Note we change the height of the SVG as we animate
-    baseHeight: 200,
+    baseHeight: 150,
     margin: { top: 10, right: leftMargin / 3, bottom: 10, left: leftMargin }
   });
   var explanation = d3.select('.explanation');
@@ -51,13 +51,7 @@ $(document).ready(() => {
       },
 
       // Teardown (previous to this)
-      function() {
-        isTransitioning = true;
-        r.undrawRoundAnnotations(0);
-        r.undrawRoundChart(0, function() {
-          isTransitioning = false;
-        });
-      }
+      function() {}
     ],
 
     // 1: (Round 1-2) Carry-over votes
@@ -81,7 +75,7 @@ $(document).ready(() => {
         // Draw redistributed votes
         r.drawRoundBetween(0, true, function() {
           // Mark candidate as knocked out
-          d3.select('.candidate-5').classed('candidate-eliminated', true);
+          d3.selectAll('.candidate-5').classed('candidate-eliminated', true);
 
           isTransitioning = false;
         });
@@ -92,25 +86,11 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '380px');
+          .attr('height', '280px');
       },
 
       // Teardown (previous to this)
-      function() {
-        isTransitioning = true;
-
-        r.undrawRoundAnnotations(1);
-        r.undrawRoundBetween(0, true, function() {
-          d3.select('.candidate-5').classed('candidate-eliminated', false);
-          isTransitioning = false;
-        });
-
-        svgContainer
-          .transition()
-          .ease('linear')
-          .duration(500)
-          .attr('height', '200px');
-      }
+      function() {}
     ],
 
     // Round 1-2 Redistribution
@@ -130,14 +110,7 @@ $(document).ready(() => {
           'TODO: Redistribution of X candidates that were mathematically impossible to win.'
         );
       },
-      function() {
-        isTransitioning = true;
-        r.undrawRoundChart(1, function() {
-          r.undrawRoundBetween(0, false, function() {
-            isTransitioning = false;
-          });
-        });
-      }
+      function() {}
     ],
 
     // Round 2: Carry-over and redistribution
@@ -145,15 +118,16 @@ $(document).ready(() => {
       function() {
         console.log('Round 2-3: Carry-over and redistribution');
         isTransitioning = true;
+        d3.selectAll('.candidate-4').classed('candidate-eliminated', true);
 
         // Highlight distribution
-        r.svg
-          .select('.vote-line-round-1.vote-line-from-4-to-1')
-          .classed('vote-line-active', true);
+        // r.svg
+        //   .select('.vote-line-round-1.vote-line-from-4-to-1')
+        //   .classed('vote-line-active', true);
 
         r.drawRoundAnnotations(2);
         r.drawRoundBetween(1, false, function() {
-          d3.select('.candidate-4').classed('candidate-eliminated', true);
+          d3.selectAll('.candidates-below').classed('show-below', true);
 
           r.drawRoundChart(2, function() {
             isTransitioning = false;
@@ -166,27 +140,9 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '560px');
+          .attr('height', 280 + stepHeight + 'px');
       },
-      function() {
-        isTransitioning = true;
-
-        r.svg
-          .select('.vote-line-round-1.vote-line-from-4-to-1')
-          .classed('vote-line-active', true);
-
-        r.undrawRoundAnnotations(2);
-        r.undrawRoundBetween(1, false, function() {
-          d3.select('.candidate-3').classed('candidate-eliminated', false);
-          isTransitioning = false;
-        });
-
-        svgContainer
-          .transition()
-          .ease('linear')
-          .duration(500)
-          .attr('height', '380px');
-      }
+      function() {}
     ],
 
     // Round 3-4: Carry-over and redistribution
@@ -194,11 +150,10 @@ $(document).ready(() => {
       function() {
         console.log('Round 3-4: Carry-over and redistribution');
         isTransitioning = true;
+        d3.selectAll('.candidate-1').classed('candidate-eliminated', true);
 
         r.drawRoundAnnotations(3);
         r.drawRoundBetween(2, false, function() {
-          d3.select('.candidate-1').classed('candidate-eliminated', true);
-
           r.drawRoundChart(3, function() {
             isTransitioning = false;
           });
@@ -210,27 +165,9 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '740px');
+          .attr('height', 280 + stepHeight * 2 + 'px');
       },
-      function() {
-        isTransitioning = true;
-
-        r.svg
-          .select('.vote-line-round-1.vote-line-from-4-to-1')
-          .classed('vote-line-active', true);
-
-        r.undrawRoundAnnotations(2);
-        r.undrawRoundBetween(1, false, function() {
-          d3.select('.candidate-3').classed('candidate-eliminated', false);
-          isTransitioning = false;
-        });
-
-        svgContainer
-          .transition()
-          .ease('linear')
-          .duration(500)
-          .attr('height', '560px');
-      }
+      function() {}
     ],
 
     // Round 4-5: Carry-over and redistribution
@@ -238,10 +175,12 @@ $(document).ready(() => {
       function() {
         console.log('Round 4-5: Carry-over and redistribution');
         isTransitioning = true;
+        d3.selectAll('.candidate-2').classed('candidate-eliminated', true);
 
         r.drawRoundAnnotations(4);
         r.drawRoundBetween(3, false, function() {
-          d3.select('.candidate-2').classed('candidate-eliminated', true);
+          d3.selectAll('.candidate-3').classed('candidate-eliminated', true);
+          d3.selectAll('.is-winner').classed('show-winner', true);
 
           r.drawRoundChart(4, function() {
             isTransitioning = false;
@@ -254,27 +193,9 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '820px');
+          .attr('height', 280 + stepHeight * 3 + 'px');
       },
-      function() {
-        isTransitioning = true;
-
-        r.svg
-          .select('.vote-line-round-1.vote-line-from-4-to-1')
-          .classed('vote-line-active', true);
-
-        r.undrawRoundAnnotations(2);
-        r.undrawRoundBetween(1, false, function() {
-          d3.select('.candidate-3').classed('candidate-eliminated', false);
-          isTransitioning = false;
-        });
-
-        svgContainer
-          .transition()
-          .ease('linear')
-          .duration(500)
-          .attr('height', '560px');
-      }
+      function() {}
     ]
   ];
 
