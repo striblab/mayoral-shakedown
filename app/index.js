@@ -100,7 +100,7 @@ $(document).ready(() => {
         isTransitioning = true;
 
         // Draw redistribution
-        r.drawRoundBetween(0, false, function() {
+        r.drawRoundBetween(0, 'redistribution', function() {
           // Draw/fill annotiation rectangle
           r.drawRoundChart(1, function() {
             isTransitioning = false;
