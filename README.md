@@ -23,7 +23,7 @@ Unsure why, but this hackery is needed for the Star Tribune CMS.
 </div>
 
 <div class="embed mobile">
-  <div id="mayoral-calculus-mobile-id">Loading...</div>
+  <iframe src="http://static.startribune.com/news/projects/all/mayoral-shakedown/mobile.html?cache=999" frameborder="0" width="100%" height="2000"></iframe>
 </div>
 
 <script type="text/javascript">
@@ -38,13 +38,6 @@ Unsure why, but this hackery is needed for the Star Tribune CMS.
       var pymParent = new window.pym.Parent(
         "mayoral-calculus-id",
         "http://static.startribune.com/news/projects/all/mayoral-shakedown/index.html?cache=999"
-      );
-    }, 1000);
-
-    setTimeout(function() {
-      var pymParent = new window.pym.Parent(
-        "mayoral-calculus-mobile-id",
-        "http://static.startribune.com/news/projects/all/mayoral-shakedown/mobile.html?cache=999"
       );
     }, 1000);
   })();
