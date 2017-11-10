@@ -45,7 +45,9 @@ $(document).ready(() => {
         r.drawRoundChart(0, function() {
           isTransitioning = false;
         });
-        explanation.html('TODO: START');
+        explanation.html(
+          '<strong>This is a label</strong><p>This is some text about this inital state.  And This is some text about this inital state.  And maybe a little more.</p>'
+        );
       },
 
       // Teardown (previous to this)

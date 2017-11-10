@@ -136,71 +136,42 @@
   }
 }
 
-.explanation {
-  width: 300px;
-  height: 50px;
-  font-family: "Benton Sans", Georgia, serif;
-  font-size: 16px;
-  line-height: 20px;
-  padding-top: 3px;
-}
 
-.btn {
-  float: left;
-  padding: 6px 16px 6px 16px;
-  margin: 4px 2px;
-  background-color: #666;
-//  border-radius: 4px;
-  color: #fff;
-  text-align: center;
-  line-height: 25px;
-  cursor: pointer;
-  font-family: "Benton Sans", arial, sans-serif;
-  font-size: 14px;
-  width: 90px;
-}
-
-.btn:hover {
-  background-color: #777;
-}
-
-.btn-inactive {
-  background-color: #ccc;
-  cursor: default;
-}
-
-.btn-inactive:hover {
-  background-color: #ccc;
-}
-
+// Candidate headins
 .candidate {
   float: left;
   padding: 0 0.5em;
   width: 16%;
   text-align: center;
-  font-family: Georgia, serif;
   font-size: 13px;
-  color: #333;
+  line-height: 1.15em;
+  color: #333333;
+  font-family: "Benton Sans", arial, helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 
   &.candidate-eliminated {
-    opacity: 0.1;
-    transition: opacity .4s linear;
+    opacity: 0.3;
+    transition: opacity 0.4s linear;
   }
 
-    img   {
-        max-width: 80px;
+  .candidate-image {
+    min-height: 8.25em;
+
+    img {
+      vertical-align: bottom;
+      max-width: 80px;
     }
+  }
 }
 
+// Chart
 .round-label {
   font-family: "Benton Sans", Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
   fill: #333;
   stroke: none;
-}
-
-.guide-wrapper {
 }
 
 .vote-label {
@@ -334,17 +305,6 @@
   clear: both;
 }
 
-.candidate-name {
-  font-family: "Benton Sans", arial, helvetica, sans-serif;
-  font-weight: bold;
-  margin: -10px 0 9px 0;
-  font-size: 13px;
-}
-
-.candidate-name.other  {
-    margin-top: -5px;
-}
-
 #adcheckB {
   border: none;
 }
@@ -353,46 +313,54 @@
   margin-bottom: 24px;
 }
 
-.btn-group  {
-    width: 90px;
+
+// Controls
+.controls {
+  max-width: 500px;
+  min-height: 100px;
+  margin: 0 auto 1em;
+  padding: 1em;
+  border: 2px solid #dfdfdf;
+  font-family: "Benton Sans", Georgia, serif;
+
+  .btn-group  {
+    width: 25%;
     float: right;
-}
+  }
 
-.controls   {
-    width: 500px;
-    height: 100px;
-}
+  .explanation {
+    width: 75%;
+    float: left;
+    line-height: 1.25em;
+    padding-right: 0.5em;
 
+    p {
+      margin-bottom: 0;
+    }
+  }
 
-.candidate-name.other  {
-    margin-top: -2px;
-}
+  .btn {
+    padding: 1px 16px 1px 16px;
+    margin: 4px 2px;
+    background-color: #666;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
 
-.btn-group  {
-    width: 90px;
-    float: right;
-}
+    &:hover {
+      background-color: #777;
+    }
+  }
 
-.btn {
-  float: right;
-    /*
-  width: 50px;
-  height: 25px;
- */
-  padding: 1px 16px 1px 16px;
-  margin: 4px 2px;
-  background-color: #666;
-//  border-radius: 4px;
-  color: #fff;
-  text-align: center;
-  line-height: 25px;
-  cursor: pointer;
-  font-family: "Benton Sans", arial, sans-serif;
-  font-size: 14px;
-}
+  .btn-inactive {
+    background-color: #ccc;
+    cursor: default;
 
-.controls   {
-    padding: 10px;
-    border: 2px solid #dfdfdf;
-    
+    &:hover {
+      background-color: #ccc;
+    }
+  }
 }
