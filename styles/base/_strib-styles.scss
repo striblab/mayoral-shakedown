@@ -22,3 +22,24 @@
     line-height: 130%;
     font-family: "Whitman Display",Georgia,Times,serif;
 }
+.article-byline-mod *{
+	display: inline-block;
+}
+.article-byline-mod {
+    font-family: "Benton Sans",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 12px;
+    .article-byline{
+		border-right: 1px solid #d3d3d3;
+		padding-right: 1em;
+		margin-right: 1em;
+    }
+    .article-dateline{
+    color: #909090;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;	
+    }
+}
