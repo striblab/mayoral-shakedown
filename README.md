@@ -15,6 +15,42 @@ This project is best used as a full, standalone page, or an embed.  The best way
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pym/1.1.2/pym.v1.min.js" type="text/javascript"></script>
 ```
 
+Unsure why, but this hackery is needed for the Star Tribune CMS.
+
+```html
+<div class="embed desktop">
+  <div id="mayoral-calculus-id">Loading...</div>
+</div>
+
+<div class="embed mobile">
+  <div id="mayoral-calculus-mobile-id">Loading...</div>
+</div>
+
+<script type="text/javascript">
+  (function(){
+    window.pym = undefined;
+
+    var el = document.createElement('script');
+    el.src = 'https://cdnjs.cloudflare.com/ajax/libs/pym/1.3.1/pym.v1.min.js';
+    document.getElementsByTagName('head')[0].appendChild(el);
+
+    setTimeout(function() {
+      var pymParent = new window.pym.Parent(
+        "mayoral-calculus-id",
+        "http://static.startribune.com/news/projects/all/mayoral-shakedown/index.html?cache=999"
+      );
+    }, 1000);
+
+    setTimeout(function() {
+      var pymParent = new window.pym.Parent(
+        "mayoral-calculus-mobile-id",
+        "http://static.startribune.com/news/projects/all/mayoral-shakedown/mobile.html?cache=999"
+      );
+    }, 1000);
+  })();
+</script>
+```
+
 ## Development
 
 ### Install

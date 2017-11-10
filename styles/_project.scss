@@ -288,12 +288,13 @@
   font-family: "Benton Sans", Georgia, serif;
 
   .btn-group  {
-    width: 25%;
+    width: 15%;
     float: right;
+    text-align: center;
   }
 
   .explanation {
-    width: 75%;
+    width: 85%;
     float: left;
     line-height: 1.25em;
     padding-right: 0.5em;
@@ -304,18 +305,21 @@
   }
 
   .btn {
-    padding: 1px 16px 1px 16px;
-    margin: 4px 2px;
-    background-color: #666;
-    color: #fff;
-    text-align: center;
-    line-height: 25px;
+    color: #FFBF00;
     cursor: pointer;
-    font-size: 14px;
-    width: 100%;
+    line-height: 1.25em;
+
+    i {
+      font-size: 4em;
+    }
+
+    span {
+      display: block;
+      color: #222222;
+    }
 
     &:hover {
-      background-color: #777;
+      color: #777;
     }
   }
 
