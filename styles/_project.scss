@@ -160,7 +160,38 @@
 
     img {
       vertical-align: bottom;
-      max-width: 80px;
+      max-height: 8em;
+    }
+  }
+}
+
+// Repeat header
+.candidates.candidates-below {
+  margin-bottom: 2em;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+
+  &.show-below {
+    opacity: 1;
+  }
+
+  .candidate {
+    .candidate-image {
+      min-height: 4.5em;
+
+      img {
+        max-height: 4em;
+      }
+    }
+
+    .is-winner {
+      padding-top: 0.5em;
+      opacity: 0;
+      transition: opacity 0.1s linear;
+
+      &.show-winner {
+        opacity: 1;
+      }
     }
   }
 }
@@ -217,12 +248,12 @@
   fill: none;
   stroke: #334561;
   stroke-opacity: 0.5;
-  transition: stroke-opacity .1s linear;
+  transition: stroke-opacity 0.1s linear;
 }
 
 .vote-line-active {
   stroke-opacity: 0.9;
-  transition: stroke-opacity .1s linear;
+  transition: stroke-opacity 0.1s linear;
 }
 
 .vote-line-original {
@@ -362,5 +393,10 @@
     &:hover {
       background-color: #ccc;
     }
+  }
+
+  // TODO: Make previous work
+  .btn-previous {
+    display: none;
   }
 }
