@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include('./_head.ejs.html')
+  </head>
+
+  <body>
+    <!-- Screen reader announcements -->
+    <div aria-live="polite" id="announcer" class="sr-only"></div>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="to-main-content sr-only">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="project-header" role="banner lg-container">
+      @@include('./_header.ejs.html')
+    </header>
+
+    <!-- Main content here -->
+    <main id="main-content" class="content lg-container" role="main">
+
+      Graphic stuff here
+
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" class="lg-container">
+      @@include('./_footer.ejs.html')
+    </footer>
+
+  </body>
+</html>
