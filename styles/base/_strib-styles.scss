@@ -1,0 +1,24 @@
+/**
+ * Styles using selectors and classnames commonly used on the site, across platforms.
+ */
+
+.article-headline {
+    text-align: center;
+    color: #333;
+    font-family: "Whitman Display", Georgia, Times, serif;
+    font-size: 5.5em;
+    line-height: 102%;
+    margin-top: 30px;
+    margin-bottom: 16px;
+    font-weight: normal;
+    letter-spacing: -1.85px;
+}
+.article-subhead {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 18px 0;
+    text-align: center;
+    font-size: 1.55em;
+    line-height: 130%;
+    font-family: "Whitman Display",Georgia,Times,serif;
+}
