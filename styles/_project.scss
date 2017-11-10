@@ -2,18 +2,7 @@
  * Project specific styling.
  */
 
-.clear {
-  clear: both;
-}
-
-.oneColContainer {
-}
-
-.no-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-}
-
+// Layout
 .lg-container {
   max-width: 1020px;
   padding: 0 0.85em;
@@ -144,6 +133,7 @@
     img {
       vertical-align: bottom;
       max-height: 8em;
+      max-width: 100%;
     }
   }
 }
@@ -349,7 +339,7 @@ footer.lg-container {
   font-size: 0.65em;
   color: #676767;
   padding-top: 3em;
-  margin-bottom: 2em;
+  padding-bottom: 2em;
   line-height: 1.25em;
 
   p {
