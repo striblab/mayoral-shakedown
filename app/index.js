@@ -19,7 +19,7 @@ $(document).ready(() => {
   var r = rcvChart.init('.target-0', data, {
     baseWidth: $('#view1').width(),
     // Note we change the height of the SVG as we animate
-    baseHeight: 150,
+    baseHeight: 55,
     margin: { top: 10, right: leftMargin / 3, bottom: 10, left: leftMargin }
   });
   var explanation = d3.select('.explanation');
@@ -46,7 +46,7 @@ $(document).ready(() => {
           isTransitioning = false;
         });
         explanation.html(
-          '<strong>Frey landed on top in the tally of first-choice votes</strong><p>The intial count of first choice votes put Frey in the lead but not hitting the necessary 50% + 1 vote mark to win, so we start counting.</p>'
+          '<strong>Frey landed on top in the tally of first-choice votes</strong><p>The initial count of first choice votes put Frey in the lead but not hitting the necessary 50% + 1 vote mark to win, so we start counting.</p>'
         );
       },
 
@@ -80,7 +80,7 @@ $(document).ready(() => {
           isTransitioning = false;
         });
         explanation.html(
-          '<strong>Carry-over</strong><p>The first step of each round is to carry-over the votes from candidates that are still in the running.</p>'
+          '<strong>The carry-over of votes</strong><p>The first step of each round is to carry-over the votes from candidates that are still in the running.</p>'
         );
 
         // Open the container
@@ -197,7 +197,7 @@ $(document).ready(() => {
         });
 
         explanation.html(
-          '<strong>Hodges is eliminated, Frey bests Dehn to win</strong><p>At this point, there is little chance that Dehn would have picked up enough votes to win, but the remaining votes from Hodges is split fairly evenly among the last two candidates.  Frey comes out on top, maintaining a first place through each round.<p>'
+          '<strong>Hodges is eliminated, Frey bests Dehn to win</strong><p>At this point, there is little chance that Dehn would have picked up enough votes to win, but the remaining votes from Hodges is split among the last two candidates.  Frey comes out on top, maintaining a first place through each round.<p>'
         );
 
         svgContainer
