@@ -1,8 +1,9 @@
 {
-  "title": "Mayoral Shakedown",
+  "title": "Mayoral Calculus",
   "organization": "Star Tribune",
-  "authors": "Star Tribune visuals team, Jeff Hargarten, MaryJo Webster, CJ Sinner, Alan Palazzolo",
-  "socialDescription": null,
-  "tweet": "Check out this new project.",
+  "authors": "Alan Palazzolo and Mukherjee",
+  "socialDescription":
+    "In Minneapolis, the path to electoral victory is complex as five candidates jostled through multiple rounds of ranked-choice vote re-allocation before it was certain Jacob Frey had enough votes to win.",
+  "tweet": "See how the Minneapolis mayoral race was counted out.",
   "twitterAccount": "@StarTribune"
 }
