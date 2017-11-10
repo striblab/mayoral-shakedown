@@ -279,11 +279,12 @@
 
 // Controls
 .controls {
-  max-width: 500px;
+  font-size: 0.85em;
+  max-width: 80%;
   min-height: 100px;
   margin: 0 auto 1em;
   padding: 1em;
-  border: 2px solid #dfdfdf;
+  border-top: 2px solid #dfdfdf;
   font-family: "Benton Sans", Georgia, serif;
 
   .btn-group  {
@@ -325,6 +326,9 @@
     &:hover {
       background-color: #ccc;
     }
+
+    // TODO: Make previous work
+    display: none;
   }
 
   // TODO: Make previous work

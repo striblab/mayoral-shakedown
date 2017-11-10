@@ -46,7 +46,7 @@ $(document).ready(() => {
           isTransitioning = false;
         });
         explanation.html(
-          '<strong>This is a label</strong><p>This is some text about this inital state.  And This is some text about this inital state.  And maybe a little more.</p>'
+          '<strong>Frey landed on top in the tally of first-choice votes</strong><p>The intial count of first choice votes put Frey in the lead but not hitting the necessary 50% + 1 vote mark to win, so we start counting.</p>'
         );
       },
 
@@ -79,7 +79,9 @@ $(document).ready(() => {
 
           isTransitioning = false;
         });
-        explanation.html('TODO: Votes carried over');
+        explanation.html(
+          '<strong>Carry-over</strong><p>The first step of each round is to carry-over the votes from candidates that are still in the running.</p>'
+        );
 
         // Open the container
         svgContainer
@@ -107,7 +109,7 @@ $(document).ready(() => {
           });
         });
         explanation.html(
-          'TODO: Redistribution of X candidates that were mathematically impossible to win.'
+          '<strong>After eliminating candidates with fewer votes, five remain</strong><p>The 2nd and 3rd choice votes get redistributed from the 10+ candidates that did not make it past the first round as they could not mathematically get enough votes to win.</p>'
         );
       },
       function() {}
@@ -134,7 +136,9 @@ $(document).ready(() => {
           });
         });
 
-        explanation.html('TODO: Nekima is eliminated and ...');
+        explanation.html(
+          '<strong>Levy-Pounds is out, Dehn and Hodges pick up many of her votes</strong><p>With 5,454 votes going to Dehn, he comes out in 2nd after this redistribution, pushing down Hodges to 3rd and Hoch to 4th where he will be eliminated next.</p>'
+        );
 
         svgContainer
           .transition()
@@ -159,7 +163,9 @@ $(document).ready(() => {
           });
         });
 
-        explanation.html('TODO: Hoch is eliminated and ...');
+        explanation.html(
+          '<strong>Hoch falls off, giving leader Frey another big batch of votes</strong><p>Frey gets 9,888 votes, the majority of Hoch\'s non-exhausted votes.  This gives Frey a solid lead and furthers Dehn\'s 2nd place standing.</p>'
+        );
 
         svgContainer
           .transition()
@@ -190,7 +196,9 @@ $(document).ready(() => {
           });
         });
 
-        explanation.html('TODO: Hodges is eliminated and ...');
+        explanation.html(
+          '<strong>Hodges is eliminated, Frey bests Dehn to win</strong><p>At this point, there is little chance that Dehn would have picked up enough votes to win, but the remaining votes from Hodges is split fairly evenly among the last two candidates.  Frey comes out on top, maintaining a first place through each round.<p>'
+        );
 
         svgContainer
           .transition()
