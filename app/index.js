@@ -14,12 +14,12 @@ import rcvChart from './mayoral-chart.js';
 utilsFn({ useView: false });
 
 $(document).ready(() => {
+  var stepHeight = 180;
   var leftMargin = 100;
-
   var r = rcvChart.init('.target-0', data, {
     baseWidth: $('#view1').width(),
     // Note we change the height of the SVG as we animate
-    baseHeight: 200,
+    baseHeight: 150,
     margin: { top: 10, right: leftMargin / 3, bottom: 10, left: leftMargin }
   });
   var explanation = d3.select('.explanation');
@@ -86,7 +86,7 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '380px');
+          .attr('height', '280px');
       },
 
       // Teardown (previous to this)
@@ -103,7 +103,6 @@ $(document).ready(() => {
         r.drawRoundBetween(0, false, function() {
           // Draw/fill annotiation rectangle
           r.drawRoundChart(1, function() {
-            d3.selectAll('.candidates-below').classed('show-below', true);
             isTransitioning = false;
           });
         });
@@ -128,6 +127,8 @@ $(document).ready(() => {
 
         r.drawRoundAnnotations(2);
         r.drawRoundBetween(1, false, function() {
+          d3.selectAll('.candidates-below').classed('show-below', true);
+
           r.drawRoundChart(2, function() {
             isTransitioning = false;
           });
@@ -139,7 +140,7 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '560px');
+          .attr('height', 280 + stepHeight + 'px');
       },
       function() {}
     ],
@@ -164,7 +165,7 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '740px');
+          .attr('height', 280 + stepHeight * 2 + 'px');
       },
       function() {}
     ],
@@ -192,7 +193,7 @@ $(document).ready(() => {
           .transition()
           .ease('linear')
           .duration(500)
-          .attr('height', '820px');
+          .attr('height', 280 + stepHeight * 3 + 'px');
       },
       function() {}
     ]
