@@ -46,7 +46,7 @@ $(document).ready(() => {
           isTransitioning = false;
         });
         explanation.html(
-          '<strong>Frey landed on top in the tally of first-choice votes</strong><p>The initial count of first choice votes put Frey in the lead but not hitting the necessary 50% + 1 vote mark to win, so we start counting.</p>'
+          '<strong>Frey landed on top in the tally of first-choice votes</strong><p>The initial count of first choice votes put Frey in the lead but short of the majority needed to win, so we start counting.</p>'
         );
       },
 
@@ -109,7 +109,7 @@ $(document).ready(() => {
           });
         });
         explanation.html(
-          '<strong>After eliminating candidates with fewer votes, five remain</strong><p>The 2nd and 3rd choice votes get redistributed from the 10+ candidates that did not make it past the first round as they could not mathematically get enough votes to win.</p>'
+          '<strong>After eliminating candidates with fewer votes, five remain</strong><p>The second- and third-choice votes get redistributed from the 10+ candidates that did not make it past the first round as they could not mathematically get enough votes to win.</p>'
         );
       },
       function() {}
@@ -137,7 +137,7 @@ $(document).ready(() => {
         });
 
         explanation.html(
-          '<strong>Levy-Pounds is out, Dehn and Hodges pick up many of her votes</strong><p>With 5,454 votes going to Dehn, he comes out in 2nd after this redistribution, pushing down Hodges to 3rd and Hoch to 4th where he will be eliminated next.</p>'
+          '<strong>Levy-Pounds is out, Dehn and Hodges pick up many of her votes</strong><p>With 5,454 votes going to Dehn, he rises to second place after this redistribution, pushing down Hodges to third and Hoch to fourth where he will be eliminated next.</p>'
         );
 
         svgContainer
@@ -164,7 +164,7 @@ $(document).ready(() => {
         });
 
         explanation.html(
-          '<strong>Hoch falls off, giving leader Frey another big batch of votes</strong><p>Frey gets 9,888 votes, the majority of Hoch\'s non-exhausted votes.  This gives Frey a solid lead and furthers Dehn\'s 2nd place standing.</p>'
+          '<strong>Hoch falls off, giving leader Frey another big batch of votes</strong><p>Frey gets 9,888 votes, the majority of Hoch\'s non-exhausted votes. This gives Frey a solid lead and furthers Dehn\'s second-place standing.</p>'
         );
 
         svgContainer
@@ -197,7 +197,7 @@ $(document).ready(() => {
         });
 
         explanation.html(
-          '<strong>Hodges is eliminated, Frey bests Dehn to win</strong><p>At this point, there is little chance that Dehn would have picked up enough votes to win, but the remaining votes from Hodges is split among the last two candidates.  Frey comes out on top, maintaining a first place through each round.<p>'
+          '<strong>Hodges is eliminated, Frey bests Dehn to win</strong><p>At this point, there is little chance that Dehn would have picked up enough votes to win, but the remaining votes from Hodges are split among the last two candidates. Frey comes out on top.<p>'
         );
 
         svgContainer
