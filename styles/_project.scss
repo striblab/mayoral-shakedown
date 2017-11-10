@@ -142,9 +142,7 @@
   font-family: "Benton Sans", Georgia, serif;
   font-size: 16px;
   line-height: 20px;
-  margin-left: 40px;
   padding-top: 3px;
-  margin-right: 110px;
 }
 
 .btn {
@@ -362,4 +360,39 @@
 
 .controls   {
     width: 500px;
+    height: 100px;
+}
+
+
+.candidate-name.other  {
+    margin-top: -2px;
+}
+
+.btn-group  {
+    width: 90px;
+    float: right;
+}
+
+.btn {
+  float: right;
+    /*
+  width: 50px;
+  height: 25px;
+ */
+  padding: 1px 16px 1px 16px;
+  margin: 4px 2px;
+  background-color: #666;
+//  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+  font-family: "Benton Sans", arial, sans-serif;
+  font-size: 14px;
+}
+
+.controls   {
+    padding: 10px;
+    border: 2px solid #dfdfdf;
+    
 }
